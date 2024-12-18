@@ -18,6 +18,7 @@ import static org.openhab.binding.homeconnectdirect.internal.HomeConnectDirectBi
 import static org.openhab.binding.homeconnectdirect.internal.HomeConnectDirectBindingConstants.THING_TYPE_DISHWASHER;
 import static org.openhab.binding.homeconnectdirect.internal.HomeConnectDirectBindingConstants.THING_TYPE_DRYER;
 import static org.openhab.binding.homeconnectdirect.internal.HomeConnectDirectBindingConstants.THING_TYPE_OVEN;
+import static org.openhab.binding.homeconnectdirect.internal.HomeConnectDirectBindingConstants.THING_TYPE_VACUUM_CLEANER;
 import static org.openhab.binding.homeconnectdirect.internal.HomeConnectDirectBindingConstants.THING_TYPE_WASHER;
 import static org.openhab.binding.homeconnectdirect.internal.HomeConnectDirectBindingConstants.THING_TYPE_WASHER_DRYER;
 import static org.openhab.binding.homeconnectdirect.internal.HomeConnectDirectBindingConstants.WS_DEVICE_ID_PATH;
@@ -34,6 +35,7 @@ import org.openhab.binding.homeconnectdirect.internal.handler.BaseHomeConnectDir
 import org.openhab.binding.homeconnectdirect.internal.handler.HomeConnectDirectCoffeeMakerHandler;
 import org.openhab.binding.homeconnectdirect.internal.handler.HomeConnectDirectDishwasherHandler;
 import org.openhab.binding.homeconnectdirect.internal.handler.HomeConnectDirectOvenHandler;
+import org.openhab.binding.homeconnectdirect.internal.handler.HomeConnectDirectVacuumCleanerHandler;
 import org.openhab.binding.homeconnectdirect.internal.handler.HomeConnectDirectWasherDryerHandler;
 import org.openhab.binding.homeconnectdirect.internal.provider.HomeConnectDirectDynamicStateDescriptionProvider;
 import org.openhab.binding.homeconnectdirect.internal.service.profile.ApplianceProfileService;
@@ -86,6 +88,9 @@ public class HomeConnectDirectHandlerFactory extends BaseThingHandlerFactory {
                     deviceId);
         } else if (THING_TYPE_DISHWASHER.equals(thingTypeUID)) {
             return new HomeConnectDirectDishwasherHandler(thing, applianceProfileService, descriptionProvider,
+                    deviceId);
+        } else if (THING_TYPE_VACUUM_CLEANER.equals(thingTypeUID)) {
+            return new HomeConnectVacuumCleanerHandler(thing, applianceProfileService, descriptionProvider,
                     deviceId);
         } else if (THING_TYPE_COFFEE_MAKER.equals(thingTypeUID)) {
             return new HomeConnectDirectCoffeeMakerHandler(thing, applianceProfileService, descriptionProvider,
