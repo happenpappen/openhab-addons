@@ -20,6 +20,7 @@ import static org.openhab.binding.homeconnectdirect.internal.HomeConnectDirectBi
 import static org.openhab.binding.homeconnectdirect.internal.HomeConnectDirectBindingConstants.APPLIANCE_TYPE_COOK_PROCESSOR;
 import static org.openhab.binding.homeconnectdirect.internal.HomeConnectDirectBindingConstants.APPLIANCE_TYPE_DISHWASHER;
 import static org.openhab.binding.homeconnectdirect.internal.HomeConnectDirectBindingConstants.APPLIANCE_TYPE_DRYER;
+import static org.openhab.binding.homeconnectdirect.internal.HomeConnectDirectBindingConstants.APPLIANCE_TYPE_VACUUM_CLEANER;
 import static org.openhab.binding.homeconnectdirect.internal.HomeConnectDirectBindingConstants.APPLIANCE_TYPE_WASHER;
 import static org.openhab.binding.homeconnectdirect.internal.HomeConnectDirectBindingConstants.APPLIANCE_TYPE_WASHER_AND_DRYER;
 import static org.openhab.binding.homeconnectdirect.internal.HomeConnectDirectBindingConstants.CONNECTION_TYPE_AES;
@@ -35,6 +36,7 @@ import static org.openhab.binding.homeconnectdirect.internal.HomeConnectDirectBi
 import static org.openhab.binding.homeconnectdirect.internal.HomeConnectDirectBindingConstants.THING_TYPE_DISHWASHER;
 import static org.openhab.binding.homeconnectdirect.internal.HomeConnectDirectBindingConstants.THING_TYPE_DRYER;
 import static org.openhab.binding.homeconnectdirect.internal.HomeConnectDirectBindingConstants.THING_TYPE_GENERIC;
+import static org.openhab.binding.homeconnectdirect.internal.HomeConnectDirectBindingConstants.THING_TYPE_VACUUM_CLEANER;
 import static org.openhab.binding.homeconnectdirect.internal.HomeConnectDirectBindingConstants.THING_TYPE_WASHER;
 import static org.openhab.binding.homeconnectdirect.internal.HomeConnectDirectBindingConstants.THING_TYPE_WASHER_DRYER;
 
@@ -156,6 +158,8 @@ public class HomeConnectDirectMDNSDiscoveryParticipant implements MDNSDiscoveryP
     private ThingTypeUID mapType(String type) {
         if (equalsIgnoreCase(type, APPLIANCE_TYPE_WASHER)) {
             return THING_TYPE_WASHER;
+        } else if (equalsIgnoreCase(type, APPLIANCE_TYPE_VACUUM_CLEANER)) {
+            return THING_TYPE_VACUUM_CLEANER;
         } else if (equalsIgnoreCase(type, APPLIANCE_TYPE_DRYER)) {
             return THING_TYPE_DRYER;
         } else if (equalsIgnoreCase(type, APPLIANCE_TYPE_WASHER_AND_DRYER)) {
@@ -174,6 +178,8 @@ public class HomeConnectDirectMDNSDiscoveryParticipant implements MDNSDiscoveryP
     private String getLabel(ThingTypeUID thingTypeUID, String brand) {
         if (THING_TYPE_WASHER.equals(thingTypeUID)) {
             return "@text/appliance.washer.label [\"" + brand + "\"]";
+        } else if (THING_TYPE_VACUUM_CLEANER.equals(thingTypeUID)) {
+            return "@text/appliance.vacuumcleaner.label [\"" + brand + "\"]";
         } else if (THING_TYPE_DISHWASHER.equals(thingTypeUID)) {
             return "@text/appliance.dishwasher.label [\"" + brand + "\"]";
         } else if (THING_TYPE_COFFEE_MAKER.equals(thingTypeUID)) {
